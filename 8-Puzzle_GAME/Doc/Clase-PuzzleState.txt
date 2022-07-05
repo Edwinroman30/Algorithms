@@ -1,0 +1,128 @@
+Clase PuzzleState:              
+      *Constructor:
+	(config es una lista con el estado inicial, n es la raíz cuadrada del size de config)
+	1-
+	  Se verifica si es un puzzle valido, verificando si n*n es diferente del size
+	  del config o si n es menor que 2, si no se cumple se lanza un error.
+	  (en nuestro caso n siempre deberá ser 3, para que sea un puzzle8)
+	2-
+	  La funcion que hace el bucle for en el constructor es obtener la posición del
+	  espacio blanco (el numero 0) en el puzzle. para obtener la fila se divide 'i'
+	  (la posicion del 0 en la lista 'config') entre 'n'. para obtener la columna se
+	  obtiene el residuo de 'i' entre 'n'.
+	  
+	  Ejemplo: 
+	    Tenemos que config = (1,2,5,3,4,0,6,7,8)
+	    El 0 esta en la posicion 5
+            La fila en la que se encuentra el 0: 5//3 = 1
+	    La columna en la que se encuetra el 0: 5%3 = 2
+	    El 0 se encuentra en la fila 1 columna 2
+	     [1, 2, 5]
+	     [3, 4, 0]   m[1][2] = 0
+	     [6, 7, 8]  
+
+	*Funcion display:
+	  La funcion display toma la lista y la representa como una matriz n*n, tomando
+	  valores de de n en n, guardandolos en una lista, e imprimiendolo.
+	  Ejemplo:
+	    (n = 3)
+	    config = (1,2,5,3,4,0,6,7,8)
+	    primera vuelta guarda [1,2,5] y lo imprime
+	    segunda vuelta guarda [3,4,0] y lo imprime
+	    tercera vuelta guarda [6,7,8] y lo imprime
+		
+		[1, 2, 5]
+	        [3, 4, 0]
+	        [6, 7, 8]
+
+	*Funcion move_left:
+	  Esta funcion mueve el cero a la izquierda 
+	  1-
+	    Verificamos si la posicion del cero está en la primera columna, si es así
+	    no puede moverse a la izquierda por lo que terminamos la función.
+ 	  2-
+	    En la variable 'blank_index' se guardará la posicion del 0 en la tupla config
+	  3-
+	    En la variable 'target' se guarda la posicon a donde el 0 se moverá
+	  4-
+	    En la variable new_config, se guarda guarda 'config' (que es una tupla) 
+	    como una lista. 
+	  5-
+	    En 'new_config' se hace un swap entre las posiciones de blank_index y target
+	  6-
+	    Se retorna un objeto de la clase PuzzleState, con la nueva lista ('new_config')
+	    como una tupla, el objeto actual como parent, la accíon realizada y su costo
+	    (movimientos totales)
+ 	     
+	  
+	*Funcion move_right:
+	  Esta funcion mueve el cero a la derecha 
+	  1-
+	    Verificamos si la posicion del cero está en la ultima columna, si es así
+	    no puede moverse a la derecha por lo que terminamos la función.
+ 	  2-
+	    En la variable 'blank_index' se guardará la posicion del 0 en la tupla config
+	  3-
+	    En la variable 'target' se guarda la posicon a donde el 0 se moverá
+	  4-
+	    En la variable new_config, se guarda guarda 'config' (que es una tupla) 
+	    como una lista. 
+	  5-
+	    En 'new_config' se hace un swap entre las posiciones de blank_index y target
+	  6-
+	    Se retorna un objeto de la clase PuzzleState, con la nueva lista ('new_config')
+	    como una tupla, el objeto actual como parent, la accíon realizada y su costo
+	    (movimientos totales)
+
+	*Funcion move_up:
+	  Esta funcion mueve el cero hacia arriba
+	  1-
+	    Verificamos si la posicion del cero está en la primera fila, si es así
+	    no puede moverse hacia arriba por lo que terminamos la función.
+ 	  2-
+	    En la variable 'blank_index' se guardará la posicion del 0 en la tupla config
+	  3-
+	    En la variable 'target' se guarda la posicon a donde el 0 se moverá
+	  4-
+	    En la variable new_config, se guarda guarda 'config' (que es una tupla) 
+	    como una lista. 
+	  5-
+	    En 'new_config' se hace un swap entre las posiciones de blank_index y target
+	  6-
+	    Se retorna un objeto de la clase PuzzleState, con la nueva lista ('new_config')
+	    como una tupla, el objeto actual como parent, la accíon realizada y su costo
+	    (movimientos totales)	  
+	  
+	*Funcion move_down:
+	  Esta funcion mueve el cero hacia abajo
+	  1-
+	    Verificamos si la posicion del cero está en la ultima fila, si es así
+	    no puede moverse hacia abajo por lo que terminamos la función.
+ 	  2-
+	    En la variable 'blank_index' se guardará la posicion del 0 en la tupla config
+	  3-
+	    En la variable 'target' se guarda la posicon a donde el 0 se moverá
+	  4-
+	    En la variable new_config, se guarda guarda 'config' (que es una tupla) 
+	    como una lista. 
+	  5-
+	    En 'new_config' se hace un swap entre las posiciones de blank_index y target
+	  6-
+	    Se retorna un objeto de la clase PuzzleState, con la nueva lista ('new_config')
+	    como una tupla, el objeto actual como parent, la accíon realizada y su costo
+	    (movimientos totales)
+	
+	*Funcion expand:
+	  Esta función realiza todo los movimientos posibles del 0 y los guarda en la lista children
+	  1-
+	     Se verifica si el objeto actual aún no se ha expandido
+	  2-
+	     Se realiza el movimiento hacia arriba y se guarda en 'up_child'
+	  3-
+	     Se comprueba si 'up_child' no es nulo, si no es nulo es que el movimiento pudo realizarse
+	     correctamente y 'up_child' guarda el objeto con el movimiento ya realizado, 'up_child' se
+	     guarda en la lista children
+	  4-
+	     Se repite el punto 2 y 3 con los demas movimientos
+	  5-
+	     Se retorna la lista children

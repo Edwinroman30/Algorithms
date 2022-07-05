@@ -1,0 +1,37 @@
+Función A_star_search:
+   -Se hace referencia a las variables globales 'maxSearchDepth' y 'expandedNodes'
+    que servirán para obtener características de la búsqueda
+   
+   -Se crea un objeto de la clase MyPQueue y se guarda en frontier, utilizaremos el
+    frontier como un priority queue (estructura de datos donde los elementos se guardan
+    con una prioridad, el primer elemento en salir es el de menor prioridad)
+
+   -Se crea un objeto de la clase set y se guarda en la variable visited, esto será 
+    utilizado para guardar los "nodos" ya visitados
+
+   -Se inserta el objeto pasado por parametro en el frontier, dicho objeto es el estado
+    inicial del puzzle
+
+   -Se entra en un bucle siempre y cuando el frontier no esté vacío:
+
+	*Se elimina el elemento de menor prioridad del frontier y se guarda en la
+         variable currState
+
+        *Se guarda el objeto de currState en el set de visitados
+
+        *Se comprueba si el objeto actual cumple con la solucion, si es así se asigna
+	 la maxima profundidad de busqueda y se termina la funcion retornando la funcion writeOutput
+
+        *Se contabiliza un nodo expandido, esto debido que el objeto actual no es la 
+         solucion, por lo que se va a expandir para buscar una solución
+
+	 *Se recorre la lista generada a partir de la funcion expand (esta lista contiene
+	  los objetos con todos los posibles movimientos de currState realizados):
+
+	         >Se verifica si el objeto actual no está en el set de visitados, si es así se obtiene
+		  el costo del objeto mediante la heuristica (distancia manhatan), dicho costo obtenido
+		  será su prioridad en el frontier, se inserta el objeto actual con su respectiva prioridad
+		  en el frontier
+
+    -Se retorna -1 en caso de fallo, los casos de fallos se pueden dar cuando el usuario ingresa 
+     un puzzle que no puede ser solucionado

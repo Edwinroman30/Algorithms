@@ -1,0 +1,35 @@
+
+En el main:
+      1-
+	La variable 'query' recibe un input del usuario, lo separa por espacio, de dicha 
+	separación genera un array(lista). 
+
+	Ejemplo: 
+	   input del usuario: dfs 1,2,5,3,4,0,6,7,8
+	   Separa por espacio y lo guarda como una lista: ["dfs", "1,2,5,3,4,0,6,7,8"]
+      2-
+	La variable 'sm' guarda el primer elemento de la lista, el cual es la busqueda
+	elegida por el usuario, la pasa a minuscula en caso de que la haya ingresado en
+	mayuscula.
+      3-
+	La variable 'begin_state', obtiene el segundo elemento de la lista query, dicho
+	elemento es un string, se separe ese elemento por comas y se guarda como una lista.
+	
+	 Ejemplo: 
+	   query = ["dfs", "1,2,5,3,4,0,6,7,8"]
+	   Segundo elemento en query: "1,2,5,3,4,0,6,7,8"
+	   Separa por comas el segundo elemento y lo convierte en una lista:
+		 ["1","2","5","3","4","0","6","7",8"]
+      4-
+	Se convierten los valores de 'begin_state' a enternos y se guardan como
+	una tupla: (1,2,5,3,4,0,6,7,8)
+      5-
+	La variable 'size' guarda la raiz cuadrada de el total de elementos
+	en la lista 'begin_state', que será 3.
+
+      6-
+	La variable 'hard_state' guarda el objero de la clase PuzzleState 
+      7- 
+	Se verifica la busqueda elegida por el usuario, puede ser bfs, dfs
+	o ast, si no es ninguna de estas se muestra un mensaje indicando
+	que la busqueda elegida no es valida. Se realiza la busqueda elegida.

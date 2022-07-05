@@ -1,0 +1,40 @@
+Función dfs_search:
+   -Se hace referencia a las variables globales 'maxSearchDepth' y 'expandedNodes'
+    que servirán para obtener características de la búsqueda
+   
+   -Se crea un objeto de la clase MyDeque y se guarda en frontier, utilizaremos el
+    frontier como stack (ultimo que entra primero que sale)
+
+   -Se crea un objeto de la clase set y se guarda en la variable visited, esto será 
+    utilizado para guardar los "nodos" ya visitados
+
+   -Se inserta el objeto pasado por parametro en el frontier, dicho objeto es el estado
+    inicial del puzzle
+
+   -Se entra en un bucle siempre y cuando el frontier no esté vacío:
+
+	*Se elimina el elemento en la ultima posicion del frontier y se guarda en la
+         variable currState
+
+        *Se guarda el objeto de currState en el set de visitados
+
+        *Se comprueba si el objeto actual cumple con la solucion, si es así se termina
+	 la funcion y se retorna la funcion writeOutput
+
+        *Se contabiliza un nodo expandido, esto debido que el objeto actual no es la 
+         solucion, por lo que se va a expandir para buscar una solución
+
+	 *Empezando de la ultima posicion, se recorre la lista generada a partir de
+	  la funcion expand (esta lista contiene los objetos con todos los posibles movimientos de currState realizados),
+	  la razón porque se recorre del final al principio, es para que los objetos se guarden en orden RLDU,
+	  R(objeto con el movimiento a la derecha) L(objeto con el movimiento a la izquierda) D(objeto con el movimiento abajo)
+	  U(objeto con el movimiento abajo), esto para que cuando salgan de la frontier(stack) salgan en orden UDLR:
+
+	         >Se verifica si el objeto actual no está en el frontier ni tampoco en el set
+		  de visitados, si es así el objeto se guarda en el frontier  y se verifica su
+		  costo para ver si es mayor el el maximo costo de busqueda, si es así se actualiza
+		  maximo costo de busqueda
+
+    -Se retorna -1 en caso de fallo, los casos de fallos se pueden dar cuando el usuario ingresa 
+     un puzzle que no puede ser solucionado
+			

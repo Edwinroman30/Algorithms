@@ -1,0 +1,51 @@
+Clase MyPQueue: 
+   *clase que representa un priority queue(estructura de datos en
+   donde se insertan elementos acompañados de una prioridad, el primer
+   elemento en salir es el de menor prioridad)
+
+   *Los elementos que se guardan en esta PQueue es un tupla de prioridad-valor
+    (prioridad, valor)
+   
+   *codigo:
+	-En el metodo constructor (__init__) se crea una lista y un set,
+	 la razón de usar un set es para optimizar el metodo 'contains'
+	 ya que es mucho mas rapido verificar si un elemento está en un set
+	 a diferencia de verificar si está en una lista.
+	
+	-push: En el metodo push se recibe un parametro, se especifica que este
+	 parametro debe ser una tupla, y se especifica que el metodo no retorna
+	 nigún valor(-> None). Lo que pasa en este metodo es que se verifica con 
+	 el metodo 'contains' si el segundo elemento de la tupla pasada por
+	 parametro (item[1]) ya se encuentra en el priority queue , si el elemento
+	 ya está llamamos al metodo que actualiza la prioridad, si el elemento no está,
+	 ingresamos la tupla pasada por parametro a la lista y insertamos el segundo
+	 elemento de la tupla(que es el valor) en el set. Por ultimo se llama el
+	 metodo que ordena la lista basandose en las prioridades
+
+	-pop: En el metodo pop no se recibe ningun parametro. Lo que sucede en este
+	 metodo es que se elimina el primer elemento en la lista (el cual es el elemento
+	 con menor prioridad) y se guarda su valor en la variable removedValue, se usa esa
+	 variable para buscar el mismo valor eliminado de la lista y eliminarlo del set, por
+	 ultimo se retorna el valor eliminado.
+
+	-isEmpty: En el metodo isEmpty no se recibe ningun parametro y se especifica que este
+	 retorna un tipo de dato booleano(-> bool).lo que sucede en este metodo es que se verifica si la
+	 priority queue esta vacía esto viendo si el numero de elementos en la lista es igual a 0, si es
+	 asi retorna true porque si está vacía, de lo contrario retorna false.
+
+	-contains: En el metodo contains se recibe un elemento por parametro y se indica que se va a retornar
+	 un dato tipo booleano (-> bool). lo que sucede en este metodo es que se usa la función 'in'
+	 de python para verificar si el elemento pasado por parametro está en el set. Este metodo es
+	 la razón del porque se usa un set, ya que es mas eficaz usar el 'in' en un set que usarlo
+	 en una lista.
+	 
+	-updatePriority: En el metodo updatePriority no se recibe ningún parametro y se indica que 
+	 se no se va a retornar ningún dato(-> None). Lo que sucede en este metodo es que se obtiene
+	 la posición del elemento pasado por parametro en la lista pq, luego se obtiene la prioridad del
+	 nuevo elemento pasado por parametro y la prioridad del mismo elemento que ya esta en la lista pq,
+	 por ultimo se comprueba si la nueva prioridad es menor que la prioridad que ya está en la lista pq
+	 , si es asi se actualiza, de lo contrario no sucede nada.
+
+ 	-orderPriorities: En el metodo orderPriorities: no se recibe ningún parametro y se indica que 
+	 se no se va a retornar ningún dato(-> None). lo que sucede en este metodo es que se ordena la lista pq
+	 basandose en el valor de la prioridad (posicion: [0])

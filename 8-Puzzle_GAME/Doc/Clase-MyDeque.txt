@@ -1,0 +1,39 @@
+Clase Mydeque: 
+   *clase que representa un deque(estructura de datos que
+   permite insertar y eliminar elementos por ambos extremos), por lo que
+   esta puede ser usada como stack(ultimo en entrar primero en salir) 
+   o como queue(primero en entrar primero en salir).
+   
+   *En esta clase usamos la clase deque del modulo collections
+
+   *codigo:
+	-En el metodo constructor (__init__) se crea un deque y un set,
+	 la razón de usar un set es para optimizar el metodo 'contains'
+	 ya que es mucho mas rapido verificar si un elemento está en un set
+	 a diferencia de verificar si está en una lista
+
+	-Push: En el metodo push se recibe un elemento como parametro y se especifica
+	 que el metodo no retorna nada(-> None). Lo que pasará en este metodo es
+	 que se inserta el elemento recibido por parametro en la ultima posicion
+	 del deque y dicho elemento tambien se guarda en el set.
+
+	-popRight: En el metodo popRight no se reciben parametros. Lo que pasará en este metodo
+	 es que se elimina el elemento en la última posicion del deque y se guarda en
+	 la variable 'removedValue', luego se usa esa misma varible con el elemento eliminado
+	 del deque para buscarlo y eliminarlo del set, por ultimo se retorna el valor eliminado.
+
+	-popLeft: En el metodo popLeft no se reciben parametros. Lo que pasará en este metodo
+	 es que se elimina el elemento en la primara posicion del deque y se guarda en
+	 la variable 'removedValue', luego se usa esa misma varible con el elemento eliminado
+	 del deque para buscarlo y eliminarlo del set, por ultimo se retorna el valor eliminado.
+
+	-contains: En el metodo contains se recibe un elemento por parametro y se indica que se va a retornar
+	 un dato tipo booleano (-> bool). lo que sucede en este metodo es que se usa la función 'in'
+	 de python para verificar si el elemento pasado por parametro está en el set. Este metodo es
+	 la razón del porque se usa un set, ya que es mas eficaz usar el 'in' en un set que usarlo
+	 en una lista.
+
+	-isEmpty: En el metodo isEmpty no se reciben parametros y se indica que este retorna un tipo de dato
+	 booleano (-> bool). lo que sucede en este metodo es que se verifica si la deque esta vacía
+	 esto viendo si el numero de elementos en el deque es igual a 0, si es asi retorna true porque
+	 si está vacía, de lo contrario retorna false	
