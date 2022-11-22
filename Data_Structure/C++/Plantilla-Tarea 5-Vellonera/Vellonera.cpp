@@ -30,28 +30,48 @@ void Vellonera::Agregar(Cancion* cancion)
 
 void Vellonera::OrdenarCanciones()
 {    
+
+    if(_primera == NULL)
+        return;
+
     /*IMPLEMENTAR ESTE METODO PARA ORDERNAR LAS CANCIONES DE MENOR A MAYOR (SEGUN SU DURACION)*/
-    Cancion* temp = _primera;
+    Cancion* initial = _primera;
+    Cancion* temp;
+
     tiempo t1;
     tiempo t2;
-    /* 
-    while (temp != NULL)
-    {
-        if(temp->GetSiguiente() == NULL)
-            break;
 
-        t1 = temp->GetDuracion();
-        t2 = temp->GetSiguiente()->GetDuracion();
+    while (initial != NULL){
 
-        if(t1.GetTiempoTotal() > t2.GetTiempoTotal()){
-            temp->SetAnterior(temp->GetSiguiente()); 
-            temp->GetSiguiente()->SetSiguiente(temp);
-        }else{
+        temp = initial->GetSiguiente();
+
+        while (temp != NULL){
+
+            t1 = initial->GetDuracion(); //30
+            t2 = temp->GetDuracion();    //20
+
+            if(t1.GetTiempoTotal() >= t2.GetTiempoTotal()){
+               
+                Cancion dinamicSong = *initial;
+                t1 = dinamicSong.GetDuracion();
+
+               
+                initial->SetArtista(temp->GetArtista());
+                initial->SetTitulo(temp->GetTitulo());
+                initial->SetDuracion(t2);
+
+                temp->SetArtista(dinamicSong.GetArtista());
+                temp->SetTitulo(dinamicSong.GetTitulo());
+                temp->SetDuracion(t1);
+           
+            }
+
             temp = temp->GetSiguiente();
         }
-      
+        
+        initial = initial->GetSiguiente();
     }
- */
+     
 }
 
 void Vellonera::CancionSiguiente()
@@ -124,6 +144,7 @@ bool Vellonera::Eliminar(int indice)
             delete current;
         }else{
             _primera = _primera->GetSiguiente();
+            _primera->SetAnterior(NULL);
             delete current;
         }
 
