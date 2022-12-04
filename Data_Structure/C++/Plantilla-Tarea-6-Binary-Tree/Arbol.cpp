@@ -44,8 +44,19 @@ void Arbol::Recorrer(Nodo* nodo)
 	//La primera línea de código de este método debe llamar al método procesar
 	Procesar(nodo);
 
-	//Escribir aqui el código de su implementación de recorrer el árbol
+	if(nodo == NULL)
+		return;
 
+	//Escribir aqui el código de su implementación de recorrer el árbol
+	std::cout << nodo->GetNombre() << std::endl;
+
+		Nodo* iteratorVariable =  nodo->GetPrimerHijo();
+		while (iteratorVariable != NULL)
+		{
+			Recorrer(iteratorVariable);
+			iteratorVariable = iteratorVariable->GetSiguienteHijo();
+		}
+	
 }
 
 //Retorna un nodo dado un indice (iniciado en cero). Si el indice no existe el método retorna NULL
@@ -78,4 +89,14 @@ Arbol::~Arbol()
 void Nodo::AgregarHijo(Nodo* hijo)
 {
 	//Este método le agrega un hijo a este nodo del arbol
+	if(_primerHijo == NULL) //Si la lista está vacía
+	{
+		_primerHijo = hijo;
+		_ultimoHijo = _primerHijo;
+	}else
+	{
+		_ultimoHijo->SetSiguiente(hijo);
+		_ultimoHijo = hijo;
+	}
+
 }
