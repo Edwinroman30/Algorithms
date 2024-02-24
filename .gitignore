@@ -127,3 +127,22 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+CMakeLists.txt.user
+CMakeCache.txt
+CMakeFiles
+CMakeScripts
+Testing
+Makefile
+cmake_install.cmake
+install_manifest.txt
+compile_commands.json
+CTestTestfile.cmake
+_deps
+bin
+.DS_Store
+Debug
+
+
+Data_Structure/C++/proyecto_final_estructuras_de_datos_2.2
+Data_Structure/C++/proyecto_final_estructuras_de_datos_2.2/*
